@@ -8,7 +8,8 @@ jobs:
       - checkout
       - tfsec/scan:
          #directory: bad
-          directory: good
+          directory: superbad
+         #directory: good
           exclude-checks: 'GEN001,GCP001,GCP002'
 workflows:
   analyze-tf-code:
