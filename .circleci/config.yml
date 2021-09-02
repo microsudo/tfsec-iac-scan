@@ -1,15 +1,12 @@
-version: '2.1'
-orbs:
-  tfsec: mycodeself/tfsec@1.0.5
-jobs:
-  tf-iac-scan:
-    executor: tfsec/default
-    steps:
-      - checkout
-      - tfsec/scan:
-          directory: .
-          exclude-checks: 'GEN001,GCP001,GCP002'
 workflows:
-  analyze-tf-code:
+  build_test:
     jobs:
-      - tf-iac-scan
+      - run_tests
+      - build_docker_image
+      - snyk/scan-iac:
+          args: main.tf
+      - gke_create_cluster:
+          requires:
+            - run_tests
+            - build_docker_image
+            - snyk/scan-iac
