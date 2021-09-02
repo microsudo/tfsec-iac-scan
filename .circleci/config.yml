@@ -7,7 +7,8 @@ jobs:
     steps:
       - checkout
       - tfsec/scan:
-          directory: .
+         #directory: bad
+          directory: good
           exclude-checks: 'GEN001,GCP001,GCP002'
 workflows:
   analyze-tf-code:
