@@ -9,7 +9,6 @@ jobs:
       - tfsec/scan:
           directory: .
           exclude-checks: 'GEN001,GCP001,GCP002'
-          tfvars-file: .
 workflows:
   analyze-tf-code:
     jobs:
