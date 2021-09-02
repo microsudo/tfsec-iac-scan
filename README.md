@@ -1,2 +1,1 @@
-# snyk-iac-scan
-# snyk-iac-scan
+# tfsec-iac-scan
